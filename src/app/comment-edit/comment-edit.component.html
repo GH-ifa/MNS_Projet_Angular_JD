@@ -1,0 +1,7 @@
+<section id="commenteditform">
+    <h1>Modification commentaire</h1>
+    <form [formGroup]="editCommentForm" (ngSubmit)="validForm()">
+        <label>Commentaire</label><input type="text" formControlName="contenu">
+        <input type="submit" value="Modifier">
+    </form>
+</section>

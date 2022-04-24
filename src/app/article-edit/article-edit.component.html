@@ -1,0 +1,8 @@
+<section id="editarticleform">
+    <h1>Modification article</h1>
+    <form [formGroup]="editArticleForm" (ngSubmit)="validForm()">
+        <label>Titre :</label><input type="text" formControlName="titre"><br>
+        <label>Contenu :</label><textarea type="text" formControlName="contenu"></textarea><br>
+        <input type="submit" value="Modifier">
+    </form>
+</section>

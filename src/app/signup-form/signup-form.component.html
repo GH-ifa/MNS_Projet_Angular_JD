@@ -1,0 +1,9 @@
+<section id="signupform">
+    <form [formGroup]="signupForm" (ngSubmit)="validForm()">
+        <label>Adresse email :</label><input type="text" formControlName="email"><br>
+        <label>Pseudo :</label><input type="text" formControlName="pseudo"><br>
+        <label>Avatar :</label><input type="text" formControlName="avatar"><br>
+        <label>Mot de passe :</label><input type="password" formControlName="password"><br>
+        <input type="submit" value="S'inscrire">
+    </form>
+</section>

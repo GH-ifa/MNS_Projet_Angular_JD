@@ -1,0 +1,11 @@
+<section id="articlelist">
+    <ul>
+        <li *ngFor="let article of articles; index as i">
+            <a routerLink='/article/{{ article.id_article }}'>
+                <h1>{{ article.titre }}</h1>
+                <div class="auteur">Écrit par : {{ findUser(article.id).pseudo }}</div>
+                <div class="articleListContent">{{article.contenu}}</div>
+            </a>
+        </li>
+    </ul>
+</section>

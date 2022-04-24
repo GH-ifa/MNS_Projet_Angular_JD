@@ -1,0 +1,25 @@
+<div id="userdetail">
+    <div id="userinfo">
+        <div><img src="{{ user.avatar }}" alt="avatar" /></div>
+        <div id="userdata">
+            <h2>{{ user.pseudo }}</h2>
+            <div>Email : {{ user.email }}</div>
+        </div>        
+    </div>
+    <div *ngIf="currentUserService.isCurrentUser(user.id)" id="buttons"><a routerLink="/user/edit/{{ user.id }}" class="edit">Modifier votre compte</a><a routerLink="/user/delete/{{ user.id }}" class="del">Supprimer votre compte</a></div>
+    <div id="lastContent">
+        <div id="lastArticles">
+            <h2>Ses {{ nbArticles }} derniers articles</h2>
+            <ul>
+                <li *ngFor="let article of lastArticles; index as i"><a routerLink="/article/{{article.id_article}}">{{ article.titre }}</a></li>
+            </ul>
+        </div>
+        <div id="lastComments">
+            <h2>Ses {{ nbComments }} derniers commentaires</h2>
+            <ul>
+                <li *ngFor="let comment of lastComments; index as i"><a routerLink="/article/{{comment.id_article}}">{{ comment.contenu }}</a></li>
+            </ul>
+        </div>
+    </div>
+    
+</div>

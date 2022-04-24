@@ -1,0 +1,7 @@
+<section id="loginform">
+    <form [formGroup]="loginForm" (ngSubmit)="validForm()">
+        <label>Adresse email :</label><input type="text" formControlName="email"><br>
+        <label>Mot de passe :</label><input type="password" formControlName="password"><br>
+        <input type="submit" value="Se connecter">
+    </form>
+</section>

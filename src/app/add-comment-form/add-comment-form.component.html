@@ -1,0 +1,6 @@
+<section id="addcommentform">
+    <form [formGroup]="addCommentForm" (ngSubmit)="validForm()">
+        <input type="text" formControlName="contenu">
+        <input type="submit" value="Commenter">
+    </form>
+</section>

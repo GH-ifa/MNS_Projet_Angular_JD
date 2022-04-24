@@ -1,0 +1,9 @@
+<section id="usereditform">
+    <h1>Modification utilisateur</h1>
+    <form [formGroup]="editUserForm" (ngSubmit)="validForm()">
+        <label>Adresse email :</label><input type="text" formControlName="email"><br>
+        <label>Pseudo :</label><input type="text" formControlName="pseudo"><br>
+        <label>Avatar :</label><input type="text" formControlName="avatar"><br>
+        <input type="submit" value="Modifier">
+    </form>
+</section>

@@ -1,0 +1,12 @@
+<section id="header">
+    <nav>
+        <ul>
+            <li><a routerLink="login" *ngIf="!isConnected()">Connexion</a></li>
+            <li><a routerLink="signup" *ngIf="!isConnected()">Inscription</a></li>
+            <li><a routerLink="users" *ngIf="isConnected()">Liste utilisateurs</a></li>
+            <li><a routerLink="articles" *ngIf="isConnected()">Liste articles</a></li>
+            <li><a routerLink="article/new" *ngIf="isConnected()">Ajout article</a></li>
+            <li><a routerLink="logout" *ngIf="isConnected()" title="Se déconnecter de {{ currentUserService.getCurrentUser().pseudo }}">Déconnexion</a></li>
+        </ul>
+    </nav>
+</section>

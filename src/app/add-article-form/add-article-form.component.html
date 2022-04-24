@@ -1,0 +1,8 @@
+<section id="addarticleform">
+    <h1>Ajout article</h1>
+    <form [formGroup]="addArticleForm" (ngSubmit)="validForm()">
+        <label>Titre :</label><input type="text" formControlName="titre"><br>
+        <label>Contenu :</label><textarea formControlName="contenu"></textarea><br>
+        <input type="submit" value="Ajouter">
+    </form>
+</section>

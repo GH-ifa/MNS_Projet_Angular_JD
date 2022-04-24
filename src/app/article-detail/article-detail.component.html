@@ -1,0 +1,18 @@
+<div id="articledetail">
+    <div id="articleinfo">
+        <h1>{{ article.titre }}</h1>
+        <div class="auteur">Écrit par : <a routerLink="/user/{{ article.id }}">{{ findUser(article.id).pseudo }}</a></div>
+        <div class="articleContent">{{ article.contenu }}</div>
+    </div>
+    <div *ngIf="currentUserService.isCurrentUser(article.id)" id="buttons"><a routerLink="/article/edit/{{ article.id_article }}" class="edit">Modifier votre article</a><a routerLink="/article/delete/{{ article.id_article }}" class="del">Supprimer votre article</a></div>
+    <app-add-comment-form idArticle="{{ article.id_article }}"></app-add-comment-form>
+    <section id="artComments">
+        <ul>
+            <li *ngFor="let comment of article.comments; index as j">
+                <div class="commentAuteur">Écrit par : <a routerLink="/user/{{ comment.id }}">{{ findUser(comment.id).pseudo }}</a></div>
+                <div class="commentContent">{{ comment.contenu }}</div>
+                <div *ngIf="currentUserService.isCurrentUser(comment.id)" id="buttons"><a routerLink="/comment/edit/{{ comment.id_commentaire }}" class="edit">Modifier</a><a routerLink="/comment/delete/{{ comment.id_commentaire }}" class="del">Supprimer</a></div>
+            </li>
+        </ul>
+    </section>
+</div>

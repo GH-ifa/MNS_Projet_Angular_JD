@@ -1,0 +1,5 @@
+<section id="userlist">
+    <ul>
+        <li *ngFor="let user of users; index as i"><a routerLink='/user/{{ user.id }}'>{{ user.pseudo }}</a></li>
+    </ul>
+</section>
