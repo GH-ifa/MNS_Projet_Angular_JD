@@ -27,7 +27,15 @@ export class SignupFormComponent implements OnInit {
 
   validForm(): void {
     let user:User = {email: this.signupForm.value.email, password: this.signupForm.value.password, pseudo: this.signupForm.value.pseudo, avatar: this.signupForm.value.avatar} as User;
-    this.apiService.createUser(user).subscribe(truc => console.log(truc));
-    this.router.navigate(['login']);
+    let that = this;
+    this.apiService.createUser(user).subscribe({
+      next(response) {
+        that.router.navigate(['login']);
+      },
+      error(err) {
+        alert('Erreur ' + err.error.message);
+      }
+    });
+
   }
 }

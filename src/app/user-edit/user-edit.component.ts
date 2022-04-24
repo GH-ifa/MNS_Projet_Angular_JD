@@ -51,7 +51,7 @@ export class UserEditComponent implements OnInit {
     updatedUser.email = this.editUserForm.value.email;
     updatedUser.pseudo = this.editUserForm.value.pseudo;
     updatedUser.avatar = this.editUserForm.value.avatar;
-    updatedUser.password = '';
+    updatedUser.password = ''; // pour éviter de modifier le mot de passe
 
     let that = this;
     this.apiService.editUser(updatedUser).subscribe({

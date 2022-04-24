@@ -1,28 +1,20 @@
-Liste des choses attendu pour le TP :
-x Une page de connexion avec le formulaire qui fonctionne
-x Une page inscription qui envoie bien au back-end l'utilisateur
-x Stockage du token
-x La liste des articles et la liste des commentaires
-x Possibilité d'ajouter un article
-x Possibilité d'ajouter un commentaire
-x Si l'article appartient à votre utilisateur ajouter un bouton modifier et un bouton supprimer
-x Gerer une page de modification d'article
-x Gerer la suppression d'article
-x Afficher la liste des utilisateurs
-x Faire une page profile utilisateur (avec la liste des 5 derniers articles et des 5 derniers commentaires de l'utilisateur)
-x Permettre à un utilisateur de modifier et supprimer son compte (mais pas celui des autres)
-x Gérer une barre de navigation qui affiche des lien différents si non connecté que si connecté (peux etre fait en 2 composants)
-x Interdire l'accès aux pages qui doivent etre accessible en connecté si non connecté (principe des guards)
-- Réaliser les tests automatisé sur un composant au choix
-x Réaliser les tests automatisé sur un service au choix
-- Réaliser une présentation acceptable (css perso, bootstrap, semantic, tailwind, bulma, material, etc...)
+# Projet réseau social en Angular pour Julien D.
 
+Pour un utilisateur non-connecté, le header affiche seulement les liens vers la page de connexion et d'inscription.
+La page d'inscription permet de créer un nouvel utilisateur puis renvoie vers la page de connexion.
+Toutes les requêtes vers l'API sont traitées par le service ApiService.
 
+Lors de la connexion, on stocke le token dans le service TokenService, qui permettra de savoir à tout moment si l'utilisateur est connecté ou pas. On stocke aussi l'ID et le pseudo de l'utilisateur dans le service CurrentUserService pour par la suite identifier les profils, articles et commentaires dont l'utilisateur connecté est l'auteur pour permettre leur édition et suppression, ainsi que d'éventuellement afficher le pseudo de l'utilisateur connecté sans refaire une requête à l'API.
 
+Une fois connecté, le header n'affiche plus les liens vers la connexion et l'inscription, mais vers les listes des utilisateurs et des articles, l'ajout d'un article, et la déconnexion.
 
+La liste des utilisateurs liste les pseudos des utilisateurs avec un lien vers leur profil où l'on peut voir plus d'informations, ainsi que leurs 5 derniers articles et 5 derniers commentaires avec un lien vers la page des articles correspondant.
+Si c'est le profil de l'utilisateur actuellement connecté, des liens vers la page de modification et suppression sont accessibles.
 
+De la même façon la liste des articles liste tous les articles, avec un lien vers l'article en entier contenant les commentaires liés à celui-ci. Si l'utilisateur connecté est l'auteur de l'article ou de certains commentaires, des liens vers l'édition et la suppression de ceux-ci sont accessibles.
 
-ghost mary on a cross
-Owen King It' hard to breath but that's alright
-avenged svenfold
-little piece of heave
+(Notons que la suppression d'un utilisateur possédant des articles ou des commentaires bloque au niveau de l'API ! (pas de suppression en cascade) De même pour les articles possédant des commentaires. Erreur : "`Cannot delete or update a parent row: a foreign key constraint fails (res_social.Commentaire, CONSTRAINT Commentaire_ibfk_1 FOREIGN KEY (id) REFERENCES utilisateur (id))`")
+
+Toutes les pages nécessitant d'être authentifié sont protégées par le guard ConnectedGuard
+
+Le composant header.component.ts et le service token.service.ts sont testés.
